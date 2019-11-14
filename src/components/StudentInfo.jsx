@@ -3,7 +3,8 @@ import axios from "axios";
 
 class StudentInfo extends Component {
   state = {
-    student: { this_data_is: "loading" }
+    student: {},
+    isLoading: true
   };
 
   componentDidMount() {
@@ -12,13 +13,30 @@ class StudentInfo extends Component {
         `https://nc-student-tracker.herokuapp.com/api/students/${this.props.id}`
       )
       .then(({ data: { student } }) => {
-        this.setState({ student });
+        this.setState({ student, isLoading: false });
       });
   }
 
   render() {
-    console.log(this.state);
-    return <div>{JSON.stringify(this.state.student)}</div>;
+    const {student, isLoading} = this.state;
+    let count = 0;
+    return (
+      (isLoading) ? <p>Loading...</p> :
+      <div>
+        <h2>{student.name}: {student.blockHistory[student.blockHistory.length-1].name}</h2>
+        <p>Starting Cohort: {student.startingCohort}</p>
+        <div>
+          Block History:
+          {
+            student.blockHistory.map(block => {
+              count++;
+              return <p key={count}>{block.name}</p>
+            })
+          }
+        </div>
+
+      </div>
+    )
   }
 }
 

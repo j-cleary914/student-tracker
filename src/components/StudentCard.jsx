@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "@reach/router";
+import StudentDeleter from "./StudentDeleter";
 
-const StudentCard = ({ student }) => {
-  // console.log(student);
+const StudentCard = ({ student, removeStudent }) => {
   return (
-    <Link to={`/students/${student._id}`}>
       <li>
-        {student.name} <br />
-        {student.currentBlock}
+        <Link to={`/students/${student._id}`}>
+        <h2>{student.name}</h2>
+        <p>Current Block: {student.currentBlock}</p>
+        <p>Starting Cohort: {student.startingCohort}</p>
+        </Link>
+        <StudentDeleter student_id={student._id} removeStudent={removeStudent}/>
       </li>
-    </Link>
   );
 };
 

@@ -12,6 +12,9 @@ const Header = () => {
         <Link to="/students">
           <button>All Students</button>
         </Link>
+        <Link to="/blocks">
+          <button>Blocks</button>
+        </Link>
       </nav>
     </div>
   );
