@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import StudentList from "./components/StudentList";
 import StudentInfo from "./components/StudentInfo";
 import BlockList from "./components/BlockList";
-import ViewToggler from "./components/ViewToggler";
+import StatsViewer from "./components/StatsViewer";
 
 class App extends Component {
 
@@ -38,15 +38,29 @@ class App extends Component {
     });
   }
 
+  updateStudent = (updatedStudent) => {
+    this.setState(currentState => {
+      const updatedStudents = currentState.students.map(student => {
+        
+        if(student._id === updatedStudent._id) {
+          student.currentBlock = updatedStudent.blockHistory[updatedStudent.blockHistory.length -1].slug;
+        }
+        return student;
+      });
+      return {students: updatedStudents};
+    });
+  }
+
   render () {
     return (
     <div className="App">
       <Header />
       <Router>
         <Home path="/" />
-        <StudentList path="/students" students={this.state.students} addStudent={this.addStudent} removeStudent={this.removeStudent}/>
+        <StudentList path="/students" students={this.state.students} addStudent={this.addStudent} removeStudent={this.removeStudent} updateStudent={this.updateStudent} />
         <StudentInfo path="/students/:id" />
         <BlockList path="/blocks" students={this.state.students}/>
+        <StatsViewer path="/stats" />
       </Router>
     </div>
     )

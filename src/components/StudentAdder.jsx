@@ -18,11 +18,12 @@ class StudentAdder extends Component {
         postStudent({name, startingCohort}).then(postedStudent => {
             addStudent(postedStudent);
         });
+        this.setState({name: '', startingCohort: 1});
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} >
+            <form className='adder' onSubmit={this.handleSubmit} >
                 <label>
                     Name:
                     <input type='text' id='name' value={this.state.name} onChange={(event) => this.handleChange(event.target.value, 'name')} />

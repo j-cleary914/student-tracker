@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import BlockCard from './BlockCard'
 
 class BlockList extends Component {
@@ -9,7 +9,7 @@ class BlockList extends Component {
     }
 
     componentDidMount() {
-        Axios.get('https://nc-student-tracker.herokuapp.com/api/blocks')
+        axios.get('https://nc-student-tracker.herokuapp.com/api/blocks')
         .then(({data: {blocks}}) => {
             this.setState({blocks})
         });
