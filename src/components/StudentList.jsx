@@ -23,50 +23,50 @@ class StudentList extends Component {
       <div className='grid-container'>
       <StudentAdder postStudent={this.postStudent} addStudent={this.props.addStudent} />
       <h2 className='num-students'>No. of Students: {students.length}</h2>
-      <div className="student-block">
+      <div >
         Fundamentals
         <ViewToggler>
-          <ul>
+          <ul className="student-block">
             {fun.map(student => {
               return <StudentCard student={student} key={student._id} removeStudent={removeStudent} updateStudent={updateStudent} />;
             })}
           </ul>
         </ViewToggler>
       </div>
-      <div className="student-block">
+      <div>
         Back End
         <ViewToggler>
-          <ul>
+          <ul className="student-block">
             {be.map(student => {
               return <StudentCard student={student} key={student._id} removeStudent={removeStudent} updateStudent={updateStudent} />;
             })}
           </ul>
         </ViewToggler>
       </div>
-      <div className="student-block">
+      <div>
         Front End
         <ViewToggler>
-          <ul>
+          <ul className="student-block">
             {fe.map(student => {
               return <StudentCard student={student} key={student._id} removeStudent={removeStudent} updateStudent={updateStudent} />;
             })}
           </ul>
         </ViewToggler>
       </div>
-      <div className="student-block">
+      <div>
         Project
         <ViewToggler>
-          <ul>
+          <ul className="student-block">
             {proj.map(student => {
               return <StudentCard student={student} key={student._id} removeStudent={removeStudent} updateStudent={updateStudent} />;
             })}
           </ul>
         </ViewToggler>
       </div>
-      <div className="student-block">
+      <div>
         Graduated
         <ViewToggler>
-          <ul>
+          <ul className="student-block">
             {grad.map(student => {
               return <StudentCard student={student} key={student._id} removeStudent={removeStudent} updateStudent={updateStudent} />;
             })}

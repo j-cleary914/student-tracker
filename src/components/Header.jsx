@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "@reach/router";
+import FontChanger from "./FontChanger";
 
-const Header = () => {
+const Header = ({changeFont}) => {
   return (
     <div className='Header'>
       <h1>NC Student Tracker</h1>
@@ -18,6 +19,7 @@ const Header = () => {
         <Link to="/stats">
           <button>Statistics</button>
         </Link>
+        <FontChanger changeFont={changeFont}/>
       </nav>
     </div>
   );
